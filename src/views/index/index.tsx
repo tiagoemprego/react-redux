@@ -8,7 +8,7 @@ interface State {
     background_image: string
 }
 
-function DataLoader() {
+function DataLoader<State>() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
