@@ -10,6 +10,7 @@ export function* load() {
             return {
                 id: el.id,
                 name: el.name,
+                language: el.language,
                 avatar_url: el.owner.avatar_url
             }
         })

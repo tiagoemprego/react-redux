@@ -30,7 +30,7 @@ class RepositoriList extends Component<Props> {
         return (
             <ul>
                 {repositories.map(repository =>
-                    <li key={repository.id}>{repository.name}</li>
+                    <li key={repository.id}>{repository.name} - {repository.language}</li>
                 )}
             </ul>
         );
