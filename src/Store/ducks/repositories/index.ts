@@ -1,5 +1,5 @@
-import {Reducer} from "redux";
-import {RepositoriesState, RepositoryTypes} from "./types"
+import { Reducer } from "redux";
+import { RepositoriesState, RepositoryTypes } from "./types"
 
 const INITIAL_STATE: RepositoriesState = {
     data: [],

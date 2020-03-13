@@ -1,13 +1,14 @@
 import React from "react";
+import { Provider } from "react-redux";
 
-import DataLoader from "./views/index"
+import store from "./Store";
+import RepositoryList from "./Components/repositoryList"
 
-function App() {
-    return (
-        <div className="App">
-            <DataLoader />
-        </div>
-    );
-}
+
+const  App = () => (
+    <Provider store={store}>
+        <RepositoryList />
+    </Provider>
+);
 
 export default App;
