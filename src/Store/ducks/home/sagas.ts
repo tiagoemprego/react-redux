@@ -7,7 +7,6 @@ import { loadSuccess, loadFailure } from "./actions";
 export function* loadHome() {
     try {
         const response = yield call(apiJson.get, '/api/games');
-        console.log(response.data.results)
         const getData = response.data.results.map((el:any) => {
             return {
                 id: el.id,
@@ -17,7 +16,7 @@ export function* loadHome() {
                 background: el.background_image,
                 clip: el.clip.clips.full
             }
-        })
+        });
         yield put(loadSuccess(getData));
 
     }catch (err) {
