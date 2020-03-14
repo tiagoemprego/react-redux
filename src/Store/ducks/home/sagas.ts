@@ -3,15 +3,13 @@ import apiGitHub from "../../../services/apiGitHub";
 
 import { loadSuccess, loadFailure } from "./actions";
 
-export function* load() {
+export function* loadHome() {
     try {
         const response = yield call(apiGitHub.get, 'users/tiagoemprego/repos');
         const getData = response.data.map((el:any) => {
             return {
                 id: el.id,
-                name: el.name,
-                language: el.language,
-                avatar_url: el.owner.avatar_url
+                name: el.name
             }
         })
         yield put(loadSuccess(getData));
@@ -21,4 +19,4 @@ export function* load() {
     }
 }
 
-export default load
+export default loadHome

@@ -3,9 +3,9 @@ import { RepositoriesState, RepositoryTypes } from "./types"
 
 const INITIAL_STATE: RepositoriesState = {
     data: [],
-    error: false,
-    loading: false
-}
+    loading: false,
+    error: false
+};
 
 const reducer: Reducer<RepositoriesState> = (state = INITIAL_STATE, action) => {
     switch (action.type) {
@@ -18,6 +18,6 @@ const reducer: Reducer<RepositoriesState> = (state = INITIAL_STATE, action) => {
         default:
             return state
     }
-}
+};
 
 export default reducer;

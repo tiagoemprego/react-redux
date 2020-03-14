@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import {bindActionCreators, Dispatch} from "redux";
+import { bindActionCreators, Dispatch } from "redux";
 
 import { Repository } from "../Store/ducks/repositories/types";
 import { AplicationState } from "../Store"
@@ -18,9 +18,9 @@ interface DispatchProps {
 
 type Props = StateProps & DispatchProps;
 
-class RepositoriList extends Component<Props> {
+class RepositoryList extends Component<Props> {
     componentDidMount(){
-        const { loadRequest } = this.props
+        const { loadRequest } = this.props;
         loadRequest()
     }
 
@@ -39,10 +39,10 @@ class RepositoriList extends Component<Props> {
 
 const mapStateToProps  = (store: AplicationState) => ({
     repositories: store.repositories.data
-})
+});
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
     bindActionCreators(RepositoriesActions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(RepositoriList);
+export default connect(mapStateToProps, mapDispatchToProps)(RepositoryList);
 
