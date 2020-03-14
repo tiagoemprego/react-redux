@@ -7,7 +7,7 @@ import { AplicationState } from "../../Store";
 import * as HomeActions from "../../Store/ducks/home/actions"
 
 interface StateProps {
-    homeList: Home[]
+    home: Home[]
 }
 
 interface DispatchProps {
@@ -23,14 +23,24 @@ class HomeIndex extends Component<props>{
     }
 
     render(){
-        const { homeList } = this.props;
+        const { home } = this.props;
 
         return (
             <ul>
-                <li>teste</li>
-                {/*{homeList.map(el =>*/}
-                {/*        <li key={el.id}>{el.name}</li>*/}
-                {/*    )}*/}
+                {home.map(el =>
+                        <li key={el.id}>
+                            <img src={el.background} alt={el.slug} width="240"/>
+                            <video width="320" height="180" controls>
+                                <source src={el.clip} type="video/mp4" />
+                            </video>
+
+                            <p>
+                                {el.name} <br/>
+                                {el.slug} <br/>
+                                {el.released}
+                            </p>
+                        </li>
+                    )}
             </ul>
         );
     }
