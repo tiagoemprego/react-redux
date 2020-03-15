@@ -6,6 +6,8 @@ import { Home } from "../../Store/ducks/home/types";
 import { AplicationState } from "../../Store";
 import * as HomeActions from "../../Store/ducks/home/actions"
 
+import Card from "../../Components/card";
+
 interface StateProps {
     home: Home[]
 }
@@ -25,24 +27,7 @@ class HomeIndex extends Component<props>{
     render(){
         const { home } = this.props;
 
-        return (
-            <ul>
-                {home.map(el =>
-                        <li key={el.id}>
-                            <img src={el.background} alt={el.slug} width="240"/>
-                            <video width="320" height="180" controls>
-                                <source src={el.clip} type="video/mp4" />
-                            </video>
-
-                            <p>
-                                {el.name} <br/>
-                                {el.slug} <br/>
-                                {el.released}
-                            </p>
-                        </li>
-                    )}
-            </ul>
-        );
+        return home.map( el =>  <Card key={el.id} home={el} /> );
     }
 }
 
@@ -51,6 +36,6 @@ const mapStateToProps = (store: AplicationState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
-    bindActionCreators(HomeActions, dispatch)
+    bindActionCreators(HomeActions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeIndex)
