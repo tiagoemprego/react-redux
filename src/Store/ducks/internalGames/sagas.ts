@@ -17,7 +17,7 @@ function* loadInternalGame(id: string) {
             released: response.data.released,
         };
 
-        yield put(loadSuccess(getData));
+        return yield put(loadSuccess(getData));
 
     }catch (err) {
         yield put(loadFailure());
@@ -27,8 +27,7 @@ function* loadInternalGame(id: string) {
 
 export default function* loadGame (action:AnyAction) {
     try {
-        let data: Internal = yield call(loadInternalGame, action.payload.id) ;
-        console.log(action)
+        let data: Internal = yield call(loadInternalGame, action.payload.id);
         yield put(requestSuccess(data));
     }
     catch (err) {

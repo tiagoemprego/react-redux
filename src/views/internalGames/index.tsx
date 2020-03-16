@@ -8,6 +8,7 @@ import { AplicationState } from "../../Store";
 interface StateProps {
     internal: InternalState
     loading: boolean
+    error: boolean
 }
 
 interface DispatchProps {
@@ -31,6 +32,7 @@ class internalGame extends Component<Props> {
 
     render(){
         const { internal, loading } = this.props;
+        console.log("data", internal)
 
         return <div>
 
@@ -43,7 +45,8 @@ class internalGame extends Component<Props> {
 
 const mapStateToProps = (state: AplicationState) => ({
     internal: state.internal.data,
-    loading: state.internal.loading
+    loading: state.internal.loading,
+    error: state.internal.error
 });
 
 const mapDispatchToProps =  (dispatch: Dispatch) =>
