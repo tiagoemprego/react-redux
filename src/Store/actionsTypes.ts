@@ -10,7 +10,7 @@ export class ActionsTypes {
     constructor(type:any) {
         this.type = type;
 
-        this.doRequest = (slug: string) => action(this.type.LOAD_REQUEST, { slug });
+        this.doRequest = (id: string) => action(this.type.LOAD_REQUEST, { id });
         this.requestSuccess = (data: any) => action(this.type.LOAD_SUCCESS, { data });
         this.requestFailure = () => action(this.type.LOAD_FAILURE);
     }

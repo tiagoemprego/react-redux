@@ -9,28 +9,30 @@ import {loadFailure, loadSuccess} from "../home/actions";
 function* loadInternalGame(id: string) {
     try {
         const response = yield call(apiJson.get, '/api/games/' + id);
-        const getData = response.data.results.map((el:any) => {
-            return {
-                id: el.id,
-                slug: el.slug,
-                name: el.name,
-                background: el.background_image,
-                released: el.released,
-            }
-        });
+        const getData = {
+            id: response.data.id,
+            slug: response.data.slug,
+            name: response.data.name,
+            background: response.data.background_image,
+            released: response.data.released,
+        };
+
         yield put(loadSuccess(getData));
 
     }catch (err) {
         yield put(loadFailure());
+        console.log(err)
     }
 }
 
 export default function* loadGame (action:AnyAction) {
     try {
         let data: Internal = yield call(loadInternalGame, action.payload.id) ;
+        console.log(action)
         yield put(requestSuccess(data));
     }
-    catch (e) {
+    catch (err) {
         yield put(requestFailure());
+        console.log(err)
     }
 }
